@@ -43,7 +43,7 @@ class PostsController extends Controller
             'body' => request('body'),
             'user_id' => '1'
         ]);
-        
+
         return redirect()->route('posts.index');
     }
 
@@ -68,7 +68,9 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+
+        return view('posts.edit', compact('post'));
     }
 
     /**
@@ -80,7 +82,18 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // $this->validate($request, [
+        //     'header' => 'required',
+        //     'body' => 'required'
+        // ]);
+
+        $post = Post::find($id);
+        
+        $post->header = $request->get('header');
+        $post->body = $request->get('body');
+        $post->save();
+
+        return redirect('/posts/'.$id);
     }
 
     /**
