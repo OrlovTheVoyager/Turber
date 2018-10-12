@@ -15,4 +15,37 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+/*
+|--------------------------------------------------------------------------
+| Posts Routes
+|--------------------------------------------------------------------------
+| Registering resourceful routes for our Posts Controller.
+|
+|    GET     | /posts             | posts.index  | index()
+|    GET     | /posts/create      | posts.create | create()
+|    POST    | /posts             | posts.store  | store()
+|    GET     | /posts/{post}      | posts.show   | show()
+|    GET     | /posts/{post}/edit | posts.edit   | edit()
+|  PUT/PATCH | /posts/{post}      | posts.update | update()
+|   DELETE   | /posts/{post}      | posts.destroy| destroy()
+|
+*/
+
 Route::resource('posts', 'PostsController');
+
+/*
+|--------------------------------------------------------------------------
+| Auth Routes
+|--------------------------------------------------------------------------
+| Registering auth resourceful routes.
+|
+*/
+
+// Authenitcation Routes
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+
+// Registration Routes
+Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('register', 'Auth\RegisterController@register');
