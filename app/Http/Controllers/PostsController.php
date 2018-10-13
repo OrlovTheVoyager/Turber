@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -37,11 +42,13 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
+        $user_id = Auth::user()->id;
+
         $post = new Post;
         $post->create([
             'header' => request('header'),
             'body' => request('body'),
-            'user_id' => '1'
+            'user_id' => $user_id
         ]);
 
         return redirect()->route('posts.index');
