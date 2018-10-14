@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -40,6 +41,17 @@ class LoginController extends Controller
     public function showLoginForm()
     {
         return view('login');
+    }
+
+    public function login()
+    {
+        if(!Auth::attempt(request(['licence', 'password']))) {
+            return back()->withErrors([
+                'message' => 'Wrong Licence or Password!'
+            ]);
+        }
+
+        return redirect('/posts');
     }
 
     public function logout()
