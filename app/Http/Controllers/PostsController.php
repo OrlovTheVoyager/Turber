@@ -12,6 +12,14 @@ class PostsController extends Controller
     {
         $this->middleware('auth');
     }
+
+    public function dashboard()
+    {
+        $user_posts = Auth::user()->posts()->latest()->get();
+
+        return view('posts.dashboard', compact('user_posts'));
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +27,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::latest()->get();
         
         return view('posts.index', compact('posts'));
     }
@@ -42,16 +50,17 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        $user_id = Auth::user()->id;
 
-        $post = new Post;
-        $post->create([
-            'header' => request('header'),
-            'body' => request('body'),
-            'user_id' => $user_id
+        $request->validate([
+            'header' => 'required',
+            'body' => 'required'
         ]);
 
-        return redirect()->route('posts.index');
+        auth()->user()->publish(
+            new Post(request(['header', 'body']))
+        );
+
+        return redirect()->route('posts.dashboard');
     }
 
     /**
@@ -75,6 +84,9 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
+        if (!auth()->user()->hasThisPost($id)) {
+            return redirect()->back()->with('message', 'Permission denied.');
+        }
         $post = Post::find($id);
 
         return view('posts.edit', compact('post'));
@@ -89,10 +101,9 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $this->validate($request, [
-        //     'header' => 'required',
-        //     'body' => 'required'
-        // ]);
+        if (!auth()->user()->hasThisPost($id)) {
+            return redirect()->back()->with('message', 'Permission denied.');
+        }
 
         $post = Post::find($id);
         
@@ -111,6 +122,9 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
+        if (!auth()->user()->hasThisPost($id)) {
+            return redirect()->back()->with('message', 'Permission denied.');
+        }
         Post::find($id)->delete();
 
         return redirect()->route('posts.index');

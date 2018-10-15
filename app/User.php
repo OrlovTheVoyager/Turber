@@ -27,4 +27,30 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    public function publish(Post $post)
+    {
+        $this->posts()->save($post);
+    }
+
+    public function type()
+    {
+        $this->type;
+    }
+
+    public function hasThisPost($id)
+    {
+        $post_owner_id = Post::find($id)->user_id;
+
+        if ($this->id != $post_owner_id) {
+            return false;
+        }
+
+        return true;
+    }
 }

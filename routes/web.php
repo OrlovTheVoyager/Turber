@@ -21,16 +21,18 @@ Route::get('/', function () {
 |--------------------------------------------------------------------------
 | Registering resourceful routes for our Posts Controller.
 |
-|    GET     | /posts             | posts.index  | index()
-|    GET     | /posts/create      | posts.create | create()
-|    POST    | /posts             | posts.store  | store()
-|    GET     | /posts/{post}      | posts.show   | show()
-|    GET     | /posts/{post}/edit | posts.edit   | edit()
-|  PUT/PATCH | /posts/{post}      | posts.update | update()
-|   DELETE   | /posts/{post}      | posts.destroy| destroy()
+|    GET     | /dashboard         | posts.dashboard| dashboard()
+|    GET     | /posts             | posts.index    | index()
+|    GET     | /posts/create      | posts.create   | create()
+|    POST    | /posts             | posts.store    | store()
+|    GET     | /posts/{post}      | posts.show     | show()
+|    GET     | /posts/{post}/edit | posts.edit     | edit()
+|  PUT/PATCH | /posts/{post}      | posts.update   | update()
+|   DELETE   | /posts/{post}      | posts.destroy  | destroy()
 |
 */
 
+Route::get('/dashboard', 'PostsController@dashboard')->name('posts.dashboard');
 Route::resource('posts', 'PostsController');
 
 /*

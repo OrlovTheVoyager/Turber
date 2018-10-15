@@ -7,3 +7,10 @@
         </ul>
     </div>
 @endif
+@if (Session::has('message'))
+    <div class="alert alert-danger">
+        <ul>
+            <li>{!! Session::get('message') !!}</li>
+        </ul>
+    </div>
+@endif
