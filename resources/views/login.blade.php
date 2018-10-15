@@ -27,6 +27,7 @@
                     </div>
                     <button type="submit" class="btn btn-primary" style="margin: 0 auto; display: block;">Login</button>
                 </form>
+                @include ('layouts.errors')
             </div>
         </div>
     </div>

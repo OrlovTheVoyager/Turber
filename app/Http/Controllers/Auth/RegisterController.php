@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class RegisterController extends Controller
 {
@@ -41,21 +43,6 @@ class RegisterController extends Controller
     }
 
     /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-        ]);
-    }
-
-    /**
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
@@ -77,10 +64,24 @@ class RegisterController extends Controller
         return view('register');
     }
 
-    public function register()
+    public function register(Request $request)
     {
-        $data = request(['name', 'licence', 'type', 'email', 'password']);
-        $user = $this->create($data);
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'licence' => 'required|integer|min:4|unique:users',
+            'type' => ['required', 'string', Rule::in(['tourguide', 'agency'])],
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
+        $user = $this->create([
+            'name' => $request['name'],
+            'licence' => $request['licence'],
+            'type' => $request['type'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+        ]);
+
         auth()->login($user);
 
         return redirect()->route('posts.index');

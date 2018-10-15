@@ -50,6 +50,7 @@
                     </div>
                     <button type="submit" class="btn btn-primary" style="margin: 0 auto; display: block;">Submit</button>
                 </form>
+                @include ('layouts.errors')
             </div>
         </div>
     </div>
