@@ -3,19 +3,26 @@
 
 @section('content')
 
+    <div>
+        <h3 class="title">All Posts</h3>
+    </div>
+
     @foreach ($posts as $post)
 
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">{{ $post->header }}</h5>
-                <p class="card-text">{{ $post->body }}</p>
-                <a href="/posts/{{ $post->id }}" class="btn btn-primary">View</a>
+        <div class="row">
+            <div class="col s10">
+                <h5>{{ $post->header }}</h5>
+                <p>by {{ App\User::find($post->user_id)->name }}</p>
+                <p>{{ str_limit($post->body, 200) }}</p>
             </div>
+            <div class="col s2">
+                <a href="/posts/{{ $post->id }}">View</a>
+            </div>            
         </div>
         
     @endforeach
 
-    <a href="/posts/create" class="btn btn-primary">Create a Post</a>
+    <a href="/posts/create">Create a Post</a>
 
 @endsection
 

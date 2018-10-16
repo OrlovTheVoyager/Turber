@@ -3,13 +3,10 @@
 
 @section('content')
 
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">{{ $post->header }}</h5>
-            <p class="card-text">{{ $post->body }}</p>
-            <a href="/posts/{{ $post->id }}/edit" class="btn btn-primary">Edit</a>
-            @include('posts.delete')
-        </div>
+    <div>
+        <h5>{{ $post->header }}</h5>
+        <p>{{ $post->body }}</p>
+        @include('posts.deledbuttons')
     </div>
 
 @endsection
