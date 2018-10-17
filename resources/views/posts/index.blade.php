@@ -1,11 +1,13 @@
 
 {{-- View for displaying all posts. --}}
 
-@section('content')
+@section('title')
 
-    <div>
-        <h3 class="title">All Posts</h3>
-    </div>
+    <h3>ALL POSTS</h3>
+
+@endsection
+
+@section('content')
 
     @foreach ($posts as $post)
 

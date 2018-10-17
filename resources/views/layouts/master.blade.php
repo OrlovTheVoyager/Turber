@@ -16,6 +16,9 @@
 </head>
 <body>
     @include('layouts.nav')
+    <div class="title z-depth-1">
+        @yield('title')
+    </div>
     <div class="content">
         @yield('content')
         @include('layouts.errors')
