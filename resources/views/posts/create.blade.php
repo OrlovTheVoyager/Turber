@@ -1,21 +1,46 @@
 
 {{-- View for creating a new post. --}}
 
+@section('title')
+    
+    <h3>CREATE A POST</h3>
+
+@endsection
+
 @section('content')
 
-    <h1>Create a post:</h1>
     <form action="/posts" method="POST">
         {{ csrf_field() }}
-        <div class="form-group">
-            <label for="header">Text Title:</label>
-            <input type="text" class="form-control" id="header" name="header">
+        <div class="row">
+            <div class="input-field col s6">
+                <input type="text" id="from_date" class="datepicker">
+                <label for="from_date">From:</label>
+            </div>
+            <div class="input-field col s6">
+                <input type="text" id="to_date" class="datepicker">
+                <label for="to_date">To:</label>
+            </div>
         </div>
-        <div class="form-group">    
+        <div class="input-field">
+            <input type="text" id="header" name="header">
+            <label for="header">Title:</label>
+          </div>
+        <div class="input-field">
+            <textarea class="materialize-textarea" id="body" name="body"></textarea>
             <label for="body">Text Body:</label>
-            <textarea class="form-control" id="body" rows="3" name="body"></textarea>
         </div>
         <input type="submit" class="btn btn-primary" value="Publish">
     </form>
+
+@endsection
+
+@section('scripts')
+
+    <script>
+        $(document).ready(function(){
+            $('.datepicker').datepicker();
+        });    
+    </script>
 
 @endsection
 

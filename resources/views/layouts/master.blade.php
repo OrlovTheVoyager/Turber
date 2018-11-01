@@ -34,5 +34,6 @@
             $('.sidenav').sidenav();
         });
     </script>
+    @yield('scripts')
 </body>
 </html>
