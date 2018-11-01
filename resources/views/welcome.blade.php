@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>TURBER</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -45,26 +45,30 @@
             }
 
             .title {
-                font-size: 84px;
+                font-size: 92px;
+                color: white;
+                text-decoration: overline;
+                font-weight: 700;
             }
-
+            .links {
+                padding-top: 40px;
+                display: inline-grid;
+                grid-template-columns: 50% 50%;
+                width: 100%;
+            }
             .links > a {
-                color: #636b6f;
+                color: white;
                 padding: 0 25px;
-                font-size: 12px;
+                font-size: 13px;
                 font-weight: 600;
                 letter-spacing: .1rem;
                 text-decoration: none;
                 text-transform: uppercase;
             }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="flex-center position-ref full-height" style="background: #1c2834;">
             <div class="content">
                 <div class="title m-b-md">
                     TURBER

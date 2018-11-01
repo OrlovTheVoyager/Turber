@@ -33,10 +33,17 @@
 }
 .sidenav.sidenav-fixed span.name {
     text-align: center;
-    padding: 16px;
+    padding: 16px 16px 0px 16px;
     font-size: 15px;
     text-decoration: none;
     margin-top: 0;
+}
+span.type {
+    font-style: italic;
+    font-size: 14px;
+    text-transform: capitalize;
+    text-align: center;
+    display: block;
 }
 a:hover {
     text-decoration: none;
