@@ -17,14 +17,13 @@
                 <p>by {{ App\User::find($post->user_id)->name }}</p>
                 <p>{{ str_limit($post->body, 200) }}</p>
             </div>
-            <div class="col s2">
-                <a href="/posts/{{ $post->id }}">View</a>
-            </div>            
+            <div class="col s2 btn-holder">
+                <a href="/posts/{{ $post->id }}" class="btn btn-view">View</a>
+            </div>
         </div>
-        
-    @endforeach
+        <hr>
 
-    <a href="/posts/create">Create a Post</a>
+    @endforeach
 
 @endsection
 

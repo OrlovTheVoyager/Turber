@@ -83,6 +83,7 @@ a:hover {
     position: fixed;
     width: calc(100% - 300px);
     left: 300px;
+    z-index: 99;
 }
 .title h3 {
     margin: 0px;
@@ -95,4 +96,14 @@ a:hover {
 }
 .content {
     padding-top: 100px;
+}
+
+/* BUTTONS */
+.btn-view {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+.btn-holder {
+    position: relative;
 }
