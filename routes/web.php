@@ -51,3 +51,13 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 // Registration Routes
 Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('/register', 'Auth\RegisterController@register');
+
+/*
+|--------------------------------------------------------------------------
+| Admin Routes
+|--------------------------------------------------------------------------
+| Registering admin resourceful routes.
+|
+*/
+
+Route::get('/users', 'UsersController@index');
