@@ -105,6 +105,11 @@ a:hover {
     padding-top: 100px;
 }
 
+/* LINKS */
+.td-link {
+    color: black;
+}
+
 /* BUTTONS */
 .btn-view {
     position: absolute;

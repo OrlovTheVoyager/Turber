@@ -14,7 +14,8 @@
         </div>
     </li>
     <hr>
-    <li><a href="/dashboard" class="{{ request()->is('dashboard') ? 'active' : '' }}">Dashboard</a></li>    
+    <li><a href="/dashboard" class="{{ request()->is('dashboard') ? 'active' : '' }}">Dashboard</a></li>
+    <li><a href="/users" class="{{ request()->is('users') ? 'active' : '' }}">Users</a></li>
     <li><a href="/posts" class="{{ request()->is('posts') ? 'active' : '' }}">Posts</a></li>
     <li><a href="/posts/create" class="{{ request()->is('posts/create') ? 'active' : '' }}">Create a Post</a></li>
   </ul>

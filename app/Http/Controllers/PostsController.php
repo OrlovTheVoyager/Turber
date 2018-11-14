@@ -56,11 +56,11 @@ class PostsController extends Controller
             'body' => 'required'
         ]);
 
-        auth()->user()->publish(
-            new Post(request(['header', 'body']))
-        );
+        $post = new Post(request(['header', 'body']));
 
-        return redirect()->route('posts.dashboard');
+        auth()->user()->publish($post);
+
+        return redirect('/posts/' . $post->id);
     }
 
     /**

@@ -9,21 +9,37 @@
 
 @section('content')
 
-    @foreach ($posts as $post)
+    <table class="highlight">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Company</th>
+                <th>Languages</th>
+                <th>Location</th>
+                <th>From</th>
+                <th>To</th>
+                <th></th>
+            </tr>
+        </thead>
+        
+        <tbody>
 
-        <div class="row">
-            <div class="col s10">
-                <h5>{{ $post->header }}</h5>
-                <p>by {{ App\User::find($post->user_id)->name }}</p>
-                <p>{{ str_limit($post->body, 200) }}</p>
-            </div>
-            <div class="col s2 btn-holder">
-                <a href="/posts/{{ $post->id }}" class="btn btn-view">View</a>
-            </div>
-        </div>
-        <hr>
+            @foreach ($posts as $post)
 
-    @endforeach
+                <tr>
+                    <td><a class="td-link" href="/posts/{{ $post->id }}">{{ $post->header }}</a></td>
+                    <td><a class="td-link" href="/users/{{ App\User::find($post->user_id)->id }}">{{ App\User::find($post->user_id)->name }}</a></td>
+                    <td>Russian</td>
+                    <td>Zlatibor</td>
+                    <td>14.11.2018</td>
+                    <td>20.11.2018</td>
+                    <td><a class="btn" href="/posts/{{ $post->id }}">View</a></td>
+                </tr>
+
+            @endforeach
+
+        </tbody>
+    </table>
 
 @endsection
 
