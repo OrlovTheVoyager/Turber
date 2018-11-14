@@ -48,6 +48,8 @@ class User extends Authenticatable
         if ( $type == $this->type ) {
             return true;
         }
+        
+        return false;
     }
 
     public function hasThisPost($id)

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Post;
 
 class UsersController extends Controller
 {
@@ -79,7 +80,13 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        User::find($id)->delete();
+        $user = User::find($id);
+
+        // Deletes All User's Posts
+        $user->posts()->delete();
+
+        // Deletes User
+        $user->delete();
 
         return redirect('/users');
     }
