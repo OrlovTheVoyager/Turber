@@ -3,27 +3,39 @@
 
 @section('title')
 
-    <h3>ALL POSTS</h3>
+    <h3>USERS</h3>
 
 @endsection
 
 @section('content')
 
-    @foreach ($users as $user)
+    <table class="highlight">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Licence Number</th>
+                <th>E-mail</th>
+                <th>User type</th>
+                <th></th>
+            </tr>
+        </thead>
 
-        <div class="row">
-            <div class="col s10">
-                <h5>{{ $user->name }}</h5>
-                <p>{{ $user->type }}</p>
-                <p>{{ $user->email }}</p>
-            </div>
-            <div class="col s2 btn-holder">
-                <a href="/posts/{{ $user->id }}" class="btn btn-view">View</a>
-            </div>
-        </div>
-        <hr>
+        <tbody>
 
-    @endforeach
+            @foreach ($users as $user)
+
+            <tr>
+                <td>{{ $user->name }}</td>
+                <td>{{ $user->licence }}</td>
+                <td>{{ $user->email }}</td>
+                <td>{{ $user->type }}</td>
+                <td><a class="btn" href="/users/{{ $user->id }}">View</a></td>
+            </tr>
+
+            @endforeach
+
+        </tbody>
+    </table>
 
 @endsection
 

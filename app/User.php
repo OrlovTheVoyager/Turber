@@ -40,7 +40,14 @@ class User extends Authenticatable
 
     public function type()
     {
-        $this->type;
+        return $this->type;
+    }
+
+    public function isType($type)
+    {
+        if ( $type == $this->type ) {
+            return true;
+        }
     }
 
     public function hasThisPost($id)

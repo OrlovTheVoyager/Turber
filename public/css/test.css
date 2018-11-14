@@ -114,3 +114,8 @@ a:hover {
 .btn-holder {
     position: relative;
 }
+
+/* FORM */
+.form-group select {
+    display: block;
+}
