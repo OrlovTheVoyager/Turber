@@ -27,12 +27,12 @@
             @foreach ($posts as $post)
 
                 <tr>
-                    <td><a class="td-link" href="/posts/{{ $post->id }}">{{ $post->header }}</a></td>
+                    <td><a class="td-link" href="/posts/{{ $post->id }}">{{ $post->title }}</a></td>
                     <td><a class="td-link" href="/users/{{ App\User::find($post->user_id)->id }}">{{ App\User::find($post->user_id)->name }}</a></td>
-                    <td>Russian</td>
-                    <td>Zlatibor</td>
-                    <td>14.11.2018</td>
-                    <td>20.11.2018</td>
+                    <td>{{ $post->languages }}</td>
+                    <td>{{ $post->location }}</td>
+                    <td>{{ date('d/m/Y', strtotime($post->date_from)) }}</td>
+                    <td>{{ date('d/m/Y', strtotime($post->date_to)) }}</td>
                     <td><a class="btn" href="/posts/{{ $post->id }}">View</a></td>
                 </tr>
 

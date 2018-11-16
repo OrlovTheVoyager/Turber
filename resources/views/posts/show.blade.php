@@ -4,8 +4,12 @@
 @section('content')
 
     <div>
-        <h5>{{ $post->header }}</h5>
-        <p>{{ $post->body }}</p>
+        <h5>{{ $post->title }}</h5>
+        <p>{{ $post->languages }}</p>
+        <p>{{ $post->location }}</p>
+        <p>{{ date('d/m/Y', strtotime($post->date_from)) }}</p>
+        <p>{{ date('d/m/Y', strtotime($post->date_to)) }}</p>
+        <p>{{ $post->text }}</p>
         @include('posts.deledbuttons')
     </div>
 

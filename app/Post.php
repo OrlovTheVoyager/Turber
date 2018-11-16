@@ -12,7 +12,7 @@ class Post extends Model
      * @var array
      */
     protected $fillable = [
-        'header', 'body', 'user_id',
+        'title', 'languages', 'location', 'date_from', 'date_to', 'text', 'user_id',
     ];
 
     public function user()

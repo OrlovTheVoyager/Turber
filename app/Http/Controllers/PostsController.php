@@ -52,11 +52,15 @@ class PostsController extends Controller
     {
 
         $request->validate([
-            'header' => 'required',
-            'body' => 'required'
+            'title' => 'required|string|min:1|max:50',
+            'languages' => 'required|string|min:1|max:50',
+            'location' => 'required|string|min:1|max:50',
+            'date_from' => 'required|date',
+            'date_to' => 'required|date',
+            'text' => 'required|string|min:10|max:500'
         ]);
 
-        $post = new Post(request(['header', 'body']));
+        $post = new Post(request(['title', 'languages', 'location', 'date_from', 'date_to', 'text']));
 
         auth()->user()->publish($post);
 
@@ -106,9 +110,22 @@ class PostsController extends Controller
         }
 
         $post = Post::find($id);
+
+        $request->validate([
+            'title' => 'required|string|min:1|max:100',
+            'languages' => 'required|string|min:1|max:50',
+            'location' => 'required|string|min:1|max:50',
+            'date_from' => 'required|date',
+            'date_to' => 'required|date',
+            'text' => 'required|string|min:1|max:500'
+        ]);
         
-        $post->header = $request->get('header');
-        $post->body = $request->get('body');
+        $post->title = $request->get('title');
+        $post->languages = $request->get('languages');
+        $post->location = $request->get('location');
+        $post->date_from = $request->get('date_from');
+        $post->date_to = $request->get('date_to');
+        $post->text = $request->get('text');
         $post->save();
 
         return redirect('/posts/'.$id);
