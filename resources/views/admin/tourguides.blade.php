@@ -1,9 +1,9 @@
 
-{{-- View for displaying all Users. --}}
+{{-- View for displaying all Tourguides. --}}
 
 @section('title')
 
-    <h3>USERS</h3>
+    <h3>TOURGUIDES</h3>
 
 @endsection
 

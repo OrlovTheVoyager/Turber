@@ -11,7 +11,7 @@ class UsersController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('user.is.type:admin', ['except' => ['index', 'show']]);
+        $this->middleware('user.is.type:admin', ['except' => ['show', 'tourguidesIndex', 'agenciesIndex']]);
     }
 
     /**
@@ -24,6 +24,20 @@ class UsersController extends Controller
         $users = User::latest()->get();
         
         return view('admin.users', compact('users'));
+    }
+
+    public function tourguidesIndex()
+    {
+        $users = User::where('type', 'tourguide')->latest()->get();
+        
+        return view('admin.tourguides', compact('users'));
+    }
+
+    public function agenciesIndex()
+    {
+        $users = User::where('type', 'agency')->latest()->get();
+        
+        return view('admin.agencies', compact('users'));
     }
 
     /**

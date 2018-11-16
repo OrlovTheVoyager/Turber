@@ -1,9 +1,9 @@
 
-{{-- View for displaying all Users. --}}
+{{-- View for displaying all Agencies. --}}
 
 @section('title')
 
-    <h3>USERS</h3>
+    <h3>AGENCIES</h3>
 
 @endsection
 
