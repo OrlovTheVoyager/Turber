@@ -69,4 +69,4 @@ Route::delete('/users/{user}', 'UsersController@destroy');
 Route::get('/tourguides', 'UsersController@tourguidesIndex');
 Route::get('/agencies', 'UsersController@agenciesIndex');
 
-// Switching to Linux
+Route::get('/generate', 'FreeDatesController@generateDates');
