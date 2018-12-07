@@ -79,7 +79,7 @@ class RegisterController extends Controller
             'licence' => $request['licence'],
             'type' => $request['type'],
             'email' => $request['email'],
-            'password' => Hash::make($request['password']),
+            'password' => $request['password'],
         ]);
 
         auth()->login($user);

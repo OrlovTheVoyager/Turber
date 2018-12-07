@@ -24,4 +24,9 @@ class FreeDatesController extends Controller
 
         return $data;
     }
+
+    function refreshDates()
+    {
+        
+    }
 }
