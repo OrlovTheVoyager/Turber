@@ -70,3 +70,5 @@ Route::get('/tourguides', 'UsersController@tourguidesIndex');
 Route::get('/agencies', 'UsersController@agenciesIndex');
 
 Route::get('/generate', 'FreeDatesController@generateDates');
+
+//Test
