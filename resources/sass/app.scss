@@ -4,10 +4,42 @@
 
 // Variables
 @import 'variables';
+@import 'skeleton';
+@import 'sidenav';
 
-.container {
-  .heading {
-    padding-top: 18rem;
-    text-align: center;
+.heading {
+  padding-top: 18rem;
+  text-align: center;
+}
+.sign-form {
+  padding-top: 14rem;
+  text-align: center;
+}
+.content {
+  padding-left: 285px;
+  padding-right: 35px;
+  width: calc(100% - (285px + 35px));
+
+  table {
+    width: 100%;
+
+    .empty_table {
+      text-align: center;
+      padding: 200px 0;
+
+      &:hover {
+        background: #fff;
+      }
+    }
+
+    .button {
+      margin-bottom: 0;
+    }
+
+    tr {
+      &:hover {
+        background: rgba(209, 209, 209, 0.2);
+      }
+    }
   }
 }

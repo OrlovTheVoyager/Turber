@@ -1,13 +1,12 @@
 
-{{-- View for displaying all posts. --}}
-
-@section('title')
-
-    <h3>ALL POSTS</h3>
-
-@endsection
-
 @section('content')
+
+    <div class="row">
+        <button>Button element</button>
+        <button>Button element</button>
+        <button>Button element</button>
+        <input type="text">
+    </div>
 
     <table class="highlight">
         <thead>
@@ -33,14 +32,20 @@
                     <td>{{ $post->location }}</td>
                     <td>{{ date('d/m/Y', strtotime($post->date_from)) }}</td>
                     <td>{{ date('d/m/Y', strtotime($post->date_to)) }}</td>
-                    <td><a class="btn" href="/posts/{{ $post->id }}">View</a></td>
+                    <td><a class="button" href="/posts/{{ $post->id }}">View</a></td>
                 </tr>
 
             @endforeach
 
+            @if (count($posts) === 0)
+            <tr>
+                <td colspan="7" class="empty_table"style="text-align: center;">There are no posts!</td>
+            </tr>
+
+            @endif
         </tbody>
     </table>
 
 @endsection
 
-@include('layouts.master')
+@include('layouts.master_auth')

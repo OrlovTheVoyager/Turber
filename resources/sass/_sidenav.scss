@@ -1,0 +1,55 @@
+.sidenav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100vh;
+    background: #1e1e1e;
+    color: white;
+    .logo {
+        text-align: center;
+        margin: 15px 0;
+        .blue {
+            color: #1eaedb;
+        }
+    }
+    .ion-ios-contact {
+        font-size: 60px;
+        width: 100%;
+        text-align: center;
+    }
+    .logged_as {
+        text-align: center;
+    }
+    ul {
+        a {
+            color: white;
+            li {
+                padding: 10px 0;
+                list-style: none;
+                padding-left: 20px;
+                margin-bottom: 0;
+                &:hover, &.active {
+                    background: #0000001a;
+                    border-left: 2px solid #1eaedb;
+                    padding-left: 18px;
+                }
+                i.ion {
+                    margin: 0 10px 0 0;
+                }
+            }
+        }
+    }
+    .logout {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        padding-bottom: 20px;
+        padding-top: 15px;
+        &:hover {
+            background: #0000001a;
+        }
+    }
+}
