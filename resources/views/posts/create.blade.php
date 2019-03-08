@@ -1,12 +1,4 @@
 
-{{-- View for creating a new post. --}}
-
-@section('title')
-    
-    <h3>CREATE A POST</h3>
-
-@endsection
-
 @section('content')
 
     <form action="/posts" method="POST">
@@ -43,14 +35,4 @@
 
 @endsection
 
-@section('scripts')
-
-    <script>
-        $(document).ready(function(){
-            $('.datepicker').datepicker();
-        });    
-    </script>
-
-@endsection
-
-@include('layouts.master')
+@include('layouts.master_auth')

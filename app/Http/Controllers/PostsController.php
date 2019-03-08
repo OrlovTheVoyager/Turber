@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use Illuminate\Support\Facades\Auth;
+use App\User;
 
 class PostsController extends Controller
 {
@@ -19,6 +20,24 @@ class PostsController extends Controller
 
         return view('posts.dashboard', compact('user_posts'));
     }
+
+    public function test()
+    {
+        $posts = Post::latest()->paginate(2);
+        $posts->getCollection()->transform(function ($post) {
+            return [
+                'id' => $post->id,
+                'user_id' => $post->user_id,
+                'user_name' => User::find($post->user_id)->name,
+                'title' => $post->title,
+                'date_from' => date('d/m/Y', strtotime($post->date_from)),
+                'date_to' => date('d/m/Y', strtotime($post->date_to)),
+                'languages' => $post->languages,
+                'location' => $post->location
+            ];
+        });
+        return response()->json($posts);
+    } 
 
     /**
      * Display a listing of the resource.

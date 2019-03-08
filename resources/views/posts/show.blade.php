@@ -15,4 +15,4 @@
 
 @endsection
 
-@include('layouts.master')
+@include('layouts.master_auth')

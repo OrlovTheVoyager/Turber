@@ -1,6 +1,4 @@
 
-{{-- View for editing a post. --}}
-
 @section('content')
 
     <form action="/posts/{{ $post->id }}" method="POST">
@@ -38,4 +36,4 @@
 
 @endsection
 
-@include('layouts.master')
+@include('layouts.master_auth')

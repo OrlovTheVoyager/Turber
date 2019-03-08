@@ -34,6 +34,8 @@ Route::get('/', function () {
 
 Route::get('/dashboard', 'PostsController@dashboard')->name('posts.dashboard');
 Route::resource('posts', 'PostsController');
+Route::get('/test', 'PostsController@test');
+
 
 /*
 |--------------------------------------------------------------------------
