@@ -7,10 +7,29 @@
 @import 'skeleton';
 @import 'sidenav';
 
-.heading {
-  padding-top: 18rem;
-  text-align: center;
+.hero {
+  background: url('/img/black.png');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  .heading {
+    padding: 18rem 0;
+    text-align: center;
+    color: white;
+    .logo {
+      text-align: center;
+      margin: 15px 0;
+      font-size: 60px;
+      .blue {
+          color: #1eaedb;
+      }
+    }
+    a {
+      color: white;
+    }
+  }
 }
+
 .sign-form {
   padding-top: 14rem;
   text-align: center;
@@ -31,15 +50,50 @@
         background: #fff;
       }
     }
-
+    .search_bar {
+      padding-top: 15px;
+      td {
+        text-align: right;
+        input {
+          margin: 0;
+        }
+        a {
+          font-size: 30px;
+        }
+      }
+    }
     .button {
       margin-bottom: 0;
     }
-
-    tr {
-      &:hover {
-        background: rgba(209, 209, 209, 0.2);
+    tbody {
+      tr {
+        &:hover {
+          background: rgba(209, 209, 209, 0.2);
+        }
       }
+    }
+    tfoot {
+      .show {
+        text-align: center;
+      }
+      .pagination {
+        text-align: right;
+        a {
+          margin: 0 20px;
+          cursor: pointer;
+          &.disabled {
+            cursor: default;
+            color: #222;
+            pointer-events: none;
+          }
+        }
+      }
+    }
+  }
+  .post {
+    h2 {
+      margin-top: 20px;
+      text-align: center;
     }
   }
 }

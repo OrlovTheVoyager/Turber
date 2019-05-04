@@ -23,7 +23,7 @@ class PostsController extends Controller
 
     public function test()
     {
-        $posts = Post::latest()->paginate(2);
+        $posts = Post::latest()->paginate(5);
         $posts->getCollection()->transform(function ($post) {
             return [
                 'id' => $post->id,

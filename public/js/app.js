@@ -14240,12 +14240,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             posts: [],
-            pagination: {}
+            pagination: {},
+            search: {
+                text: '',
+                date_from: '',
+                date_to: ''
+            }
         };
     },
     created: function created() {
@@ -14262,14 +14275,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.pagination = {
                     current_page: response.data.current_page,
                     last_page: response.data.last_page,
+                    showing: _this.posts.length,
                     total: response.data.total,
                     next_page: response.data.next_page_url,
                     prev_page: response.data.prev_page_url
                 };
-                console.log(response.data.data);
             }).catch(function (error) {
                 console.log(error);
             });
+        },
+        searchData: function searchData(search) {
+            console.log(search.text);
+            console.log(search.date_from);
+            console.log(search.date_to);
         }
     }
 });
@@ -14283,10 +14301,86 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._m(0),
-    _vm._v(" "),
     _c("table", { staticClass: "highlight" }, [
-      _vm._m(1),
+      _c("thead", [
+        _c("tr", { staticClass: "search_bar" }, [
+          _c("td", { attrs: { colspan: "7" } }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.search.date_from,
+                  expression: "search.date_from"
+                }
+              ],
+              attrs: { type: "date" },
+              domProps: { value: _vm.search.date_from },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.search, "date_from", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.search.date_to,
+                  expression: "search.date_to"
+                }
+              ],
+              attrs: { type: "date" },
+              domProps: { value: _vm.search.date_to },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.search, "date_to", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.search.text,
+                  expression: "search.text"
+                }
+              ],
+              attrs: { type: "text" },
+              domProps: { value: _vm.search.text },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.search, "text", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              attrs: { type: "submit" },
+              on: {
+                click: function($event) {
+                  return _vm.searchData(_vm.search)
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(0)
+      ]),
       _vm._v(" "),
       _c(
         "tbody",
@@ -14322,45 +14416,57 @@ var render = function() {
           ])
         }),
         0
-      )
-    ]),
-    _vm._v(" "),
-    _c(
-      "button",
-      {
-        class: [{ disabled: !_vm.pagination.prev_page }],
-        on: {
-          click: function($event) {
-            return _vm.fetchPosts(_vm.pagination.prev_page)
-          }
-        }
-      },
-      [_vm._v("Previous")]
-    ),
-    _vm._v(" "),
-    _c("p", [
-      _vm._v(
-        "Page " +
-          _vm._s(_vm.pagination.current_page) +
-          " of " +
-          _vm._s(_vm.pagination.last_page)
-      )
-    ]),
-    _vm._v(" "),
-    _c(
-      "button",
-      {
-        class: [{ disabled: !_vm.pagination.next_page }],
-        on: {
-          click: function($event) {
-            return _vm.fetchPosts(_vm.pagination.next_page)
-          }
-        }
-      },
-      [_vm._v("Next")]
-    ),
-    _vm._v(" "),
-    _c("p", [_vm._v("Total number of posts: " + _vm._s(_vm.pagination.total))])
+      ),
+      _vm._v(" "),
+      _c("tfoot", [
+        _c("tr", [
+          _c("td", { attrs: { colspan: "2" } }, [
+            _c("i", [
+              _vm._v(
+                "Showing " +
+                  _vm._s(_vm.pagination.showing) +
+                  " out of " +
+                  _vm._s(_vm.pagination.total)
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("td", { staticClass: "pagination", attrs: { colspan: "5" } }, [
+            _c(
+              "a",
+              {
+                class: [{ disabled: !_vm.pagination.prev_page }],
+                on: {
+                  click: function($event) {
+                    return _vm.fetchPosts(_vm.pagination.prev_page)
+                  }
+                }
+              },
+              [_vm._v("Previous")]
+            ),
+            _vm._v(
+              "\n                    Page " +
+                _vm._s(_vm.pagination.current_page) +
+                " of " +
+                _vm._s(_vm.pagination.last_page) +
+                "\n                    "
+            ),
+            _c(
+              "a",
+              {
+                class: [{ disabled: !_vm.pagination.next_page }],
+                on: {
+                  click: function($event) {
+                    return _vm.fetchPosts(_vm.pagination.next_page)
+                  }
+                }
+              },
+              [_vm._v("Next")]
+            )
+          ])
+        ])
+      ])
+    ])
   ])
 }
 var staticRenderFns = [
@@ -14368,41 +14474,20 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("i", { staticClass: "ion ion-ios-search" }),
+    return _c("tr", [
+      _c("th", [_vm._v("Title")]),
       _vm._v(" "),
-      _c("input", {
-        staticStyle: {
-          margin: "20px 0 5px 0",
-          float: "right",
-          height: "30px",
-          "border-top-left-radius": "0",
-          "border-bottom-left-radius": "0"
-        },
-        attrs: { type: "text" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("Title")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Company")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Languages")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Location")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("From")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("To")]),
-        _vm._v(" "),
-        _c("th")
-      ])
+      _c("th", [_vm._v("Company")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Languages")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Location")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("From")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("To")]),
+      _vm._v(" "),
+      _c("th")
     ])
   }
 ]

@@ -697,9 +697,31 @@ there.
   background: #0000001a;
 }
 
-.heading {
-  padding-top: 18rem;
+.hero {
+  background: url("/img/black.png");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.hero .heading {
+  padding: 18rem 0;
   text-align: center;
+  color: white;
+}
+
+.hero .heading .logo {
+  text-align: center;
+  margin: 15px 0;
+  font-size: 60px;
+}
+
+.hero .heading .logo .blue {
+  color: #1eaedb;
+}
+
+.hero .heading a {
+  color: white;
 }
 
 .sign-form {
@@ -726,11 +748,51 @@ there.
   background: #fff;
 }
 
+.content table .search_bar {
+  padding-top: 15px;
+}
+
+.content table .search_bar td {
+  text-align: right;
+}
+
+.content table .search_bar td input {
+  margin: 0;
+}
+
+.content table .search_bar td a {
+  font-size: 30px;
+}
+
 .content table .button {
   margin-bottom: 0;
 }
 
-.content table tr:hover {
+.content table tbody tr:hover {
   background: rgba(209, 209, 209, 0.2);
+}
+
+.content table tfoot .show {
+  text-align: center;
+}
+
+.content table tfoot .pagination {
+  text-align: right;
+}
+
+.content table tfoot .pagination a {
+  margin: 0 20px;
+  cursor: pointer;
+}
+
+.content table tfoot .pagination a.disabled {
+  cursor: default;
+  color: #222;
+  pointer-events: none;
+}
+
+.content .post h2 {
+  margin-top: 20px;
+  text-align: center;
 }
 
